@@ -1,0 +1,288 @@
+%-------------------------------------
+% LaTeX Resume for Software Engineers
+% Author : Leslie Cheng
+% License : MIT
+%-------------------------------------
+
+\documentclass[letterpaper,12pt]{article}[leftmargin=*]
+
+\usepackage[empty]{fullpage}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fontawesome}
+\usepackage{ragged2e}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage[T1]{fontenc}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+
+%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
+% Header settings
+\def \fullname {Himavanth Boddu}
+\def \subtitle {}
+
+\def \linkedinicon {\faLinkedin}
+\def \linkedinlink {https://linkedin.com/in/himubb/}
+\def \linkedintext {/himubb}
+
+\def \phoneicon {\faPhone}
+\def \homeicon {\faHome}
+
+\def \phonetext {+1-352-871-3413}
+\def \addresstext {3515 SW 39th Blvd apt 3A}
+\def \emailicon {\faEnvelope}
+\def \emaillink {mailto:himavantboddu@ufl.edu}
+\def \emailtext {himavantboddu@ufl.edu}
+
+\def \githubicon {\faGithub}
+\def \githublink {https://github.com/himubb}
+\def \githubtext {/himubb}
+
+
+
+\def \headertype {\doublecol} % \singlecol or \doublecol
+
+% Misc settings
+\def \entryspacing {-2pt}
+\def \entryspacingnew {-4pt}
+
+\def \bulletstyle {\faAngleRight}
+
+% Define colours
+\definecolor{primary}{HTML}{000000}
+\definecolor{secondary}{HTML}{0D47A1}
+\definecolor{accent}{HTML}{263238}
+\definecolor{links}{HTML}{1565C0}
+
+%------------------------------------------------------------------------------------------------------------------- 
+
+% Defines to make listing easier
+\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
+\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
+\def \email {\emailicon \hspace{3pt}\href{\emaillink}{\emailtext}}
+\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
+\def \website {\websiteicon \hspace{3pt}\href{\websitelink}{\websitetext}}
+
+\def \address {\homeicon \hspace{3pt}{ \addresstext}}
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.1in}
+
+% Define the link colours
+\hypersetup{
+    colorlinks=true,
+    urlcolor=links,
+}
+
+% Set the margin alignment 
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\justifying
+%-------------------------
+% Custom commands
+
+% Sections
+\renewcommand{\section}[2]{\vspace{5pt}
+  \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2}}}
+}
+
+% Entry start and end, for spacing
+\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=2.5mm]\vspace{\entryspacingnew}}
+\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacingnew}}
+
+% Itemized list for the bullet points under an entry, if necessary
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=4.5mm]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{\entryspacing}}
+
+% Resume item
+\renewcommand{\labelitemii}{\bulletstyle}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+% Entry with title, subheading, date(s), and location
+\newcommand{\resumeEntryTSDL}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+      \textit{\color{accent}\small#3} & \textit{\color{accent}\small\justifying{#4}} \\
+    \end{tabular*}\vspace{-8pt}
+}
+
+% Entry with title and date(s)
+\newcommand{\resumeEntryTD}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+    \end{tabular*}\vspace{-10pt}
+}
+
+% Entry for special (skills)
+\newcommand{\resumeEntryS}[2]{
+  \item[]\small{
+    \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
+  }
+}
+
+% Double column header
+\newcommand{\doublecol}[6]{
+  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    {
+      \begin{tabular}[c]{l}
+        \fontsize{30}{45}\selectfont{\color{primary}{{\hspace{-15pt}\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
+        {\small#4} & {\small#1} \\
+        {\small#5} & {\small#2} \\
+        {\small#6} & {\small#3}
+      \end{tabular}
+    }
+  \end{tabular*}
+}
+
+% Single column header
+\newcommand{\singlecol}[6]{
+  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    {
+      \begin{tabular}[b]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l}
+        {\small#1} \\
+        {\small#2} \\
+        {\small#3} \\
+        {\small#4} \\
+        {\small#5} \\
+        {\small#6}
+      \end{tabular}
+    }
+  \end{tabular*}
+}
+
+\begin{document}
+%-------------------------------------------------- BEGIN HERE --------------------------------------------------
+
+%---------------------------------------------------- HEADER ----------------------------------------------------
+
+\headertype{\linkedin\hspace{30pt}}{\github\hspace{30pt}}{}{\hspace{30pt}\phone}{\hspace{30pt}\email}{\hspace{30pt}\address} % Set the order of items here
+\vspace{-10pt} % Set a negative value to push the body up, and the opposite
+
+%-------------------------------------------------- EDUCATION --------------------------------------------------
+\hspace{-15pt}\section{\faGraduationCap}{Education}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Master of Science in Computer science}{Aug 2019 – Apr 2021}
+      {University of Florida, Gainesville, FL}{GPA: 3.77/4.0}
+    \resumeEntryTSDL
+      {Bachelor of Engineering in Electronics}{Jul 2013 – Jun 2017}
+      {Shri Ramdeobaba College of Engineering and Management, India}{GPA: 8.12/10.0}
+  \resumeEntryEnd
+
+%-------------------------------------------------- EXPERIENCE --------------------------------------------------
+\vspace{5pt}
+\hspace{-15pt}\section{\faPieChart}{Experience}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Systems Engineer}{Jun 2017 – Jul 2019}
+      {Infosys Limited}{Bengaluru,India}
+    \resumeItemListStart
+      \resumeItem {Worked as a Full-stack developer providing customized solutions according to the client requirement using Finacle which is a product by Infosys for banking solutions. Java, Javascript, XML, Oracle SQL, HTML, CSS, PolymerJS, and Hibernate framework was used for development and Jenkins and Docker for deployment.}
+      \resumeItem {Worked on writing automated scripts that reduced the time for deployment of the project and releasing regular patches to the onsite environment by ensuring the overall sanity of the application by 95\%..}
+      \resumeItem {Wrote scripts to minimize the time taken for the batch wise maintenance of transaction records by 80\%.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+
+
+
+%-------------------------------------------------- PROJECTS --------------------------------------------------
+\vspace{3pt}
+\hspace{-15pt}\section{\faFlask}{Projects}
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Twitter Engine using Phoenix framework}{Dec 2019}
+    \resumeItemListStart
+      \resumeItem {A web interface for Twitter like application using Phoenix framework which allows user to register an account, login, logout, tweet, re-tweet, subscribe to another user and view their tweets, search for a mention or hashtag using web sockets.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  \vspace{-3pt}
+  \resumeEntryStart
+   \resumeEntryTD
+      {Job scheduler for construction company}{Nov 2019}
+    \resumeItemListStart
+      \resumeItem {Implemented Red-Black Tree and Min- heap data structures in Java without using built-in libraries for data related to construction of buildings and finishing time of construction. Each node of Min-heap corresponded to that of Red-Black Tree and operations like insert and delete on one of them is reflected on another.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Implementation of Tapestry algorithm using Elixir}{Oct 2019}
+    \resumeItemListStart
+      \resumeItem {Implemented Tapestry algorithm for a given number of nodes as input using Elixir and calculated maximum hops possible from a source to number of destinations given in the input.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Implementation of Gossip algorithm and push-sum algorithm using Elixir}{Sept 2019}
+    \resumeItemListStart
+      \resumeItem {Designed and implemented Gossip algorithm for various topologies using Elixir which was used to explore concurrency model and implement parallelism between actors. }
+    \resumeItemListEnd
+  \resumeEntryEnd
+   \resumeEntryStart
+    \resumeEntryTD
+      {Building a Dynamic SPA using REST API}{Oct 2017}
+    \resumeItemListStart
+      \resumeItem {Created dynamic single page application using REST API calls from given InfyRetail application implementing various modules like login, discount, filtering section and frequently sold item list were connected using routing and deployed using Jenkins.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+   \resumeEntryStart
+    \resumeEntryTD
+      {Automated pizza delivery system using Firebird V (eYantra, IIT Bombay)}{Jan 2016}
+    \resumeItemListStart
+      \resumeItem {Simulated pizza delivery system by creating order picking algorithm and implemented Djikstra’s Algorithm to find shortest path to deliver the given order on the given grid of houses in the least possible time.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  
+ 
+   
+ 
+
+
+%-------------------------------------------------- PROGRAMMING SKILLS --------------------------------------------------
+\vspace{3pt}
+\hspace{-15pt}\section{\faGears}{Skills}
+ \resumeEntryStart
+  \resumeEntryS{Languages } {Python, Java, C, C++, HTML, CSS, Elixir, Javascript, AngularJS, PolymerJS}
+  \resumeEntryS{Databases } {Oracle, MySQL ,MongoDB}
+  \resumeEntryS{Framework } {Hibernate ORM, Phoenix, FEBA(Finacle)}
+  \resumeEntryS{Applications } {Eclipse, PyCharm, VSCode,  SQL Developer, Postman, Putty, WinSCP, Filezilla, Tortoise SVN, Jenkins, Docker, Kubernetes }
+ \resumeEntryEnd
+\vspace{8pt}
+
+
+\hspace{-15pt}\section{\faTrophy}{Achievements}
+
+   \resumeEntryStart
+ 
+    \resumeItemListStart
+      \resumeItem {Awarded Achievement Award Scholarship for New Engineering Graduate Students for outstanding credentials  by the University of Florida, Herbert Wertheim College of Engineering.}
+      
+      \resumeItem{Selected for RGSTC-TIFAC-MSME Internship program awarded by Government of India.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+\end{document}
